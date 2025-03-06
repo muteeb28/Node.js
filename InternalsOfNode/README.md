@@ -42,7 +42,6 @@ Node.js is not:
 
 ### Internals of Node.js
 ![Internals](images/1.png)
-
 Node.js provides various capabilities through its components:
 - **V8 Engine**: Executes JavaScript code.
 - **libuv Library**: Provides asynchronous I/O operations.
@@ -55,7 +54,7 @@ Node.js provides various capabilities through its components:
 - **Event Loop**: Handles non-blocking I/O operations.
 
 ### How Node.js Code is Written
-
+![code](images/2.png)
 Node.js code interacts with the Node.js ecosystem through layers:
 - **JS Layer**: Contains JavaScript functions exposed by Node.js.
 - **C++ Layer**: Majority of the Node.js runtime is written in C++.
@@ -92,7 +91,7 @@ setTimeout(() => {
 To verify this behavior, you can check the official Node.js codebase. Look for the implementation of `setTimeout` and observe how the delay value is handled when `0` is passed.
 
 ## Chrome V8 Engine
-
+![Internals](images/3.png)
 ### What is a JavaScript Engine?
 
 A JavaScript engine is a software component that executes JavaScript code. It takes JavaScript code as input and produces machine code as output, which can be executed by the computer's processor. The JavaScript engine is responsible for parsing, interpreting, and compiling JavaScript code.
@@ -124,14 +123,14 @@ The parser is the first component of the V8 engine. It takes the JavaScript code
 #### Interpreter (Ignition)
 
 The interpreter, named Ignition, converts the AST to bytecode, an intermediate form of code.
-
+![ast](images/4.png)
 - **Function**: Converts the AST to bytecode.
 - **Execution**: Starts running the bytecode.
 - **Purpose**: Provides a quick, unoptimized execution of the code.
 
 **Detailed Explanation**:
 Ignition creates a short bytecode or unoptimized version of your code. Once you start running this bytecode, the V8 engine starts collecting runtime metrics or runtime information about which particular functions are getting executed repeatedly. Based on these runtime metrics, the V8 engine optimizes your code. To optimize the code, it uses a compiler called TurboFan, which is an optimization compiler.
-
+![Ignition](images/5.png)
 #### Compiler (TurboFan)
 
 TurboFan is a compiler optimization specifically designed to create highly optimized machine code. It performs various types of checks and optimizations based on past runs of the code.
@@ -179,7 +178,7 @@ Just-In-Time (JIT) compilation is a mechanism where the compilation and interpre
 - **Performance**: Optimizes frequently executed code paths, improving overall performance.
 
 ### Memory Management and Garbage Collection
-
+![ornico](images/6.png)
 Apart from providing capabilities like parsing, interpreting, and compiling, the V8 engine also manages memory and performs garbage collection.
 
 #### Memory Management
@@ -203,10 +202,12 @@ Apart from providing capabilities like parsing, interpreting, and compiling, the
 - **Performance**: Improves overall performance by reducing memory fragmentation and ensuring efficient garbage collection.
 
 ---
-Links
-[Talk 2: Ignition - an interpreter for V8](https://www.youtube.com/watch?v=r5OWCtuKiAk)
-[nodejs github](https://github.com/nodejs/node/blob/main/lib/timers.js)
-[ECMAScript® 2025](https://tc39.es/ecma262/)
-[presentation](https://docs.google.com/presentation/d/1OqjVqRhtwlKeKfvMdX6HaCIu9wpZsrzqpIVIwQSuiXQ/edit#slide=id.g1453eb7f19_1_131)
-[the Orinoco garbage collector](https://v8.dev/blog/trash-talk)
+## Useful Links
+
+1. [Talk 2: Ignition - an interpreter for V8](https://www.youtube.com/watch?v=r5OWCtuKiAk)  
+2. [Node.js GitHub](https://github.com/nodejs/node/blob/main/lib/timers.js)  
+3. [ECMAScript® 2025](https://tc39.es/ecma262/)  
+4. [Presentation](https://docs.google.com/presentation/d/1OqjVqRhtwlKeKfvMdX6HaCIu9wpZsrzqpIVIwQSuiXQ/edit#slide=id.g1453eb7f19_1_131)  
+5. [The Orinoco Garbage Collector](https://v8.dev/blog/trash-talk)  
+
 
